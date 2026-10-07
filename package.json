@@ -1,0 +1,63 @@
+{
+  "name": "mcp-weigh",
+  "version": "0.1.0",
+  "description": "Weigh your MCP server fleet: tools, estimated context tokens, duplicate tools and pruning suggestions across Claude Code, Claude Desktop, Cursor and Codex.",
+  "type": "module",
+  "bin": {
+    "mcp-weigh": "dist/cli.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "README.es.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test test/",
+    "prepublishOnly": "npm run typecheck && npm test"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude-code",
+    "claude-desktop",
+    "cursor",
+    "codex",
+    "tokens",
+    "context-window",
+    "audit",
+    "cli"
+  ],
+  "author": "Marco Orta <https://ortamarco.me>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OrtaMarco/mcp-weigh.git"
+  },
+  "homepage": "https://github.com/OrtaMarco/mcp-weigh#readme",
+  "bugs": {
+    "url": "https://github.com/OrtaMarco/mcp-weigh/issues"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "smol-toml": "^1.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "typescript": "^5.5.0"
+  }
+}
