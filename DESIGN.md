@@ -34,9 +34,10 @@ worth.
   near-duplicate tools across servers, over-long descriptions, pruning suggestions.
 - Output: `table` (default), `json`, `markdown`.
 - `--server <name>` to probe only some servers; `--timeout`; `--config`.
-- Secrets: environment variables, headers and arguments that look like secrets are
-  never printed. Server `env`/`headers` are used to launch/connect but only key
-  *names* can ever appear in output, and command lines are redacted.
+- Secrets: environment variables and headers are used to launch/connect but are never
+  printed, not even their names. Command lines and URLs are redacted (secret-looking
+  flags, `KEY=value`, URL credentials, well-known token shapes) and error messages
+  (including a child's stderr tail) are scrubbed of every literal env/header value.
 
 ## Non-goals
 
@@ -80,7 +81,7 @@ mcp-weigh [options]
       --cwd <dir>         project directory for .mcp.json and per-project servers
       --long <chars>      description length flagged as long (default: 1000)
       --similarity <0-1>  near-duplicate threshold  (default: 0.8)
-      --no-discover       list what would be probed, do not launch anything
+      --list              list what would be probed and exit; launches nothing
   -h, --help / -v, --version
 ```
 
