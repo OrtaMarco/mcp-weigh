@@ -49,7 +49,7 @@ export function formatTable(report: Report): string {
   if (report.duplicates.length > 0) {
     out.push("", "Duplicate / overlapping tools:");
     for (const g of report.duplicates) {
-      const label = g.kind === "exact" ? "same name" : `similar (${g.score})`;
+      const label = g.kind === "exact" ? "same name" : `similar (${g.score.toFixed(2)})`;
       out.push(`  [${label}] ${g.members.map((m) => `${m.server}:${m.tool}`).join("  ~  ")}`);
     }
   }
@@ -84,7 +84,7 @@ export function formatMarkdown(report: Report): string {
   out.push("", "## Duplicate / overlapping tools", "");
   if (report.duplicates.length === 0) out.push("None found.");
   for (const g of report.duplicates) {
-    const label = g.kind === "exact" ? "same name" : `similar (${g.score})`;
+    const label = g.kind === "exact" ? "same name" : `similar (${g.score.toFixed(2)})`;
     out.push(`- _${label}_: ${g.members.map((m) => `\`${m.server}:${m.tool}\``).join(" ~ ")}`);
   }
 
