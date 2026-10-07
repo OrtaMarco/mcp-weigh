@@ -28,7 +28,7 @@ npx mcp-weigh -f markdown        # paste-able into an issue or a doc
 npx mcp-weigh -s github -f json  # one server, machine-readable
 ```
 
-Requires Node 20+. Nothing is installed in your clients and no config is modified.
+Requires Node 22+. Nothing is installed in your clients and no config is modified.
 
 ### Example output
 
