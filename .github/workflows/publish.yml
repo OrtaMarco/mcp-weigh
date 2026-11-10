@@ -45,4 +45,16 @@ jobs:
             exit 1
           fi
 
+      # La 0.1.0 se publicó a mano (sin paquete no hay publicador de confianza) y su etiqueta
+      # llegó cuando npm ya la tenía: una versión ya publicada se salta en vez de fallar.
+      - name: ¿Ya está esta versión en npm?
+        id: npm
+        run: |
+          SPEC="$(node -p "const p=require('./package.json'); p.name+'@'+p.version")"
+          if npm view "$SPEC" version >/dev/null 2>&1; then
+            echo "published=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::$SPEC ya está en npm; no se vuelve a publicar"
+          fi
+
       - run: npm publish --access public
+        if: steps.npm.outputs.published != 'true'
