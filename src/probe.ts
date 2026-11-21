@@ -19,7 +19,7 @@ class ProbeTimeout extends Error {
   }
 }
 
-const CLIENT_INFO = { name: "mcp-weigh", version: "0.1.0" };
+const CLIENT_INFO = { name: "mcp-weigh", version: "0.1.1" };
 const STDERR_TAIL = 400;
 
 function withDeadline<T>(work: Promise<T>, ms: number, onTimeout: () => void): Promise<T> {

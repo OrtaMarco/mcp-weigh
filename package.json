@@ -1,6 +1,6 @@
 {
   "name": "mcp-weigh",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Weigh your MCP server fleet: tools, estimated context tokens, duplicate tools and pruning suggestions across Claude Code, Claude Desktop, Cursor and Codex.",
   "type": "module",
   "bin": {
